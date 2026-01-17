@@ -1,0 +1,191 @@
+/* Container to center everything on the screen */
+.about-container {
+    padding: 0 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 50px; /* Space between image and text */
+}
+
+/* Character Image */
+.profile-pixel {
+    height: 350px; /* Adjust based on your image size */
+    width: auto;
+    transition: transform 0.3s ease-in-out;
+}
+.profile-pixel:hover {
+    transform: scale(1.05);
+}
+
+/* Text Section */
+.about-text {
+    max-width: 600px; /* Keeps lines from being too long */
+}
+
+.about-text h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.8; /* Adds the space between lines */
+    color: #444;
+    margin-bottom: 20px; /* Space between paragraphs */
+    text-align: justify;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.social-icon {
+    font-size: 28px;      /* Controls the size of the logo */
+    color: #333;          /* Matches your text color */
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Specific Hover Colors */
+.social-icon:hover {
+    transform: translateY(-5px); /* Moves it up smoothly */
+}
+
+/* Optional: Individual colors on hover */
+.fa-github:hover {
+    color: #24292e; /* GitHub Dark Gray */
+}
+
+.fa-linkedin:hover {
+    color: #0077b5; /* LinkedIn Blue */
+}
+
+
+.tech-stack {
+    padding: 40px 10% 0px 10%;;
+}
+
+.tech-stack h3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+.tech-grid {
+    display: grid;
+    /* Creates 4 columns like the image */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px;
+}
+
+.tech-card {
+    display: flex;
+    flex-direction: column; /* Stack logo over text */
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background: #fff;
+    border: 2px solid #000; /* Bold black border */
+    border-radius: 15px; /* Rounded corners like the image */
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.tech-logo {
+    width: 40px; /* Larger logos */
+    height: 40px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tech-name {
+    font-size: 18px;
+    font-weight: 800; /* Extra bold for titles */
+    color: #000;
+}
+
+.about-cta {
+    text-align: center;
+    padding: 0 10% 20px 10%;
+    margin-top: 40px;
+}
+.cta-line {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin-bottom: 20px; /* Reduced from 50px */
+    width: 30%;        /* Slightly shorter line looks cleaner */
+    margin-inline: auto;
+}
+
+/* Tighten the text spacing inside the CTA */
+.about-cta h2 {
+    font-size: 32px;    /* Slightly smaller to save vertical space */
+    font-weight: 800;
+    margin-bottom: 5px; /* Reduced from 10px */
+}
+
+.about-cta p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px; /* Reduced from 30px */
+}
+
+.cta-button {
+    background: #000;
+    color: #fff;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px; /* Rounded pill style */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cta-button i {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover i {
+    transform: translateX(5px); /* Arrow moves right on hover */
+}
+
+/* Hover effect from the reference style */
+.tech-card:hover {
+    background: #f8f8f8;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 900px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
