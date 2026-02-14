@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	</head>
@@ -18,6 +22,7 @@
 		<section id="home"></section>
 		<section id="about"></section>
 		<section id="projects"></section>
+		<section id="project-detail"></section>
 		<div style="display: flex; justify-content: center; gap: 20px; margin-top: 25px; margin-bottom: 25px;">
     			<a href="https://github.com/Deepak-774" target="_blank" style="font-size: 40px; color: #333;">
         			<i class="fa-brands fa-github"></i>
@@ -28,31 +33,34 @@
 		</div>
 		
 		<script type="module">
-  // 1. Import BOTH App and Firestore
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyDuBsqKS9nRm_6sDw4pByGI9MriyVqINMU",
-    authDomain: "projects-list-website.firebaseapp.com",
-    projectId: "projects-list-website",
-    storageBucket: "projects-list-website.firebasestorage.app",
-    messagingSenderId: "999088501765",
-    appId: "1:999088501765:web:4d39f29fd24b9b2f61986c"
-  };
-
-  // 2. Initialize Firebase and Firestore
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // 3. Make 'db' available globally so main.js can use it
-  window.db = db;
-  // Also make Firestore functions global for easy use in main.js
-  window.getDocs = getDocs;
-  window.collection = collection;
-
-  console.log("Firebase & Firestore initialized!");
-</script>
-<script src ="main.js"></script>
+			// Import Firebase App, Analytics (optional) and Firestore from v12.8.0
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-analytics.js";
+			import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+		
+			// Your web app's Firebase configuration (projects-website-f1359)
+			const firebaseConfig = {
+			  apiKey: "AIzaSyCS4ehQUwsVbg6_pVgTGBQidpmAplJrBYY",
+			  authDomain: "projects-website-f1359.firebaseapp.com",
+			  projectId: "projects-website-f1359",
+			  storageBucket: "projects-website-f1359.firebasestorage.app",
+			  messagingSenderId: "257873715911",
+			  appId: "1:257873715911:web:fc0289cacb3fef961054e2",
+			  measurementId: "G-WDYMV35RTZ"
+			};
+		
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+			const db = getFirestore(app);
+		
+			// Expose Firestore helpers globally so main.js can use them
+			window.db = db;
+			window.getDocs = getDocs;
+			window.collection = collection;
+		
+			console.log("Firebase (projects-website-f1359) initialized!");
+		</script>
+		<script src ="main.js"></script>
 	</body>
 </html>

@@ -1,61 +1,3 @@
-// main.js
-
-// 1. Reference the global Firebase variables set in the HTML script tag
-// These come from the <script type="module"> in your index.html
-
-/**
- * Fetches project data from Firestore and injects it into the project-grid
- */
-async function loadProjects() {
-    const db = window.db;
-    const getDocs = window.getDocs;
-    const collection = window.collection;
-
-    if (!db || !getDocs || !collection) {
-        console.error("Firebase is not initialized yet. Projects cannot be loaded.");
-        return;
-    }
-
-    const projectGrid = document.querySelector('.project-grid');
-    
-    // Safety check: if the grid isn't in the DOM yet, don't run the fetch
-    if (!projectGrid) {
-        console.warn("Project grid not found. It might still be loading.");
-        return;
-    }
-
-    try {
-        // Must match your Firestore collection name exactly: "Projects"
-        const querySnapshot = await getDocs(collection(db, "Projects"));
-        
-        // Clear the placeholder/hardcoded content
-        projectGrid.innerHTML = ""; 
-
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            
-            // Build the card using your Firestore fields: Display_image, Title, Tech_Used
-            projectGrid.innerHTML += `
-                <div class="card">
-                    <img src="${data.Display_image}" class="project-img" alt="${data.Title}">
-                    <div class="project-details">
-                        <h3>${data.Title}</h3>
-                        <div class="tech-tags">
-                            ${data.Tech_Used.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                        </div>
-                        <a href="project-details.html?id=${doc.id}" class="view-link">
-                            View Project >
-                        </a>
-                    </div>
-                </div>
-            `;
-        });
-        console.log("Firebase data loaded successfully!");
-    } catch (error) {
-        console.error("Error fetching projects from Firebase:", error);
-    }
-}
-
 /**
  * Fetches external HTML files and injects them into the section tags
  */
@@ -72,24 +14,100 @@ async function loadSection(id, file) {
 }
 
 /**
- * Manages visibility of sections and triggers data loading
+ * Manages visibility of sections
  */
 function showSection(id) {
-    // Hide all sections
     document.querySelectorAll("section").forEach(section => {
         section.classList.remove("active");
     });
 
-    // Show the targeted section
     const section = document.getElementById(id);
     if (section) {
         section.classList.add("active");
     }
 
-    // CRITICAL: If the user navigates to projects, we try to load the data again
-    // This ensures the grid fills up even if the initial load was wonky.
-    if (id === "projects") {
-        loadProjects();
+    window.scrollTo(0, 0);
+}
+
+function updateNav(targetId) {
+    document.querySelectorAll("nav ul li a").forEach(l => l.classList.remove("active"));
+    const navLink = document.querySelector(`nav ul li a[href="#${targetId}"]`);
+    if (navLink) {
+        navLink.classList.add("active");
+    }
+}
+
+/**
+ * Loads projects from Firestore and populates the project grid
+ */
+async function loadProjectsFromFirestore() {
+    if (!window.db || !window.collection || !window.getDocs) {
+        console.error("Firestore is not initialized on window.");
+        return;
+    }
+
+    const grid = document.querySelector("#projects .project-grid, #projects #projects-grid");
+    if (!grid) {
+        console.warn("Projects grid element not found.");
+        return;
+    }
+
+    grid.innerHTML = "";
+
+    try {
+        const projectsCol = window.collection(window.db, "Projects");
+        const snapshot = await window.getDocs(projectsCol);
+
+        snapshot.forEach(doc => {
+            const data = doc.data();
+
+            const card = document.createElement("div");
+            card.className = "card";
+
+            const img = document.createElement("img");
+            img.className = "project-image";
+            img.src = data["Display Image"] || "Images/Project Logos/Calculator.png";
+            img.alt = data["Project Name"] || "Project image";
+            card.appendChild(img);
+
+            const details = document.createElement("div");
+            details.className = "project-details";
+
+            const title = document.createElement("h3");
+            title.textContent = data["Project Name"] || "Untitled Project";
+            details.appendChild(title);
+
+            const tagsWrapper = document.createElement("div");
+            tagsWrapper.className = "tech-tags";
+
+            const tags = data.Tags || data["Tags"] || [];
+            if (Array.isArray(tags)) {
+                tags.forEach(tag => {
+                    const span = document.createElement("span");
+                    span.className = "tag";
+                    span.textContent = tag;
+                    tagsWrapper.appendChild(span);
+                });
+            }
+            details.appendChild(tagsWrapper);
+
+            const link = document.createElement("a");
+            link.className = "view-link";
+            link.href = "#project-detail";
+            link.textContent = "View Project";
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                showSection("project-detail");
+                updateNav("projects");
+            });
+            details.appendChild(link);
+
+            card.appendChild(details);
+            grid.appendChild(card);
+        });
+    } catch (err) {
+        console.error("Error loading projects from Firestore", err);
+        grid.innerHTML = "<p>Error loading projects. Please try again later.</p>";
     }
 }
 
@@ -97,47 +115,35 @@ function showSection(id) {
  * INITIALIZATION: Runs when the page first loads
  */
 window.addEventListener("load", async () => {
-    // 1. Wait for all external HTML files to be injected into index.html
+    // 1. Load all sections
     await loadSection("home", "home.html");
     await loadSection("about", "about.html");
     await loadSection("projects", "projects.html");
+    await loadSection("project-detail", "project_detail.html");
 
-    // 1b. Pre-load projects into the projects grid once the HTML is in place
-    await loadProjects();
+    // 1b. After projects markup is injected, populate cards from Firestore
+    await loadProjectsFromFirestore();
 
-    // 2. Default view: Show Home
+    // 2. Set default view
     showSection("home"); 
     
-    // 3. Highlight the home link in the nav
-    const homeLink = document.querySelector("nav ul li a[href='#home']");
-    if (homeLink) homeLink.classList.add("active");
+    // 3. Set up Navigation Clicks AFTER sections are loaded
+    setupNavigation();
 });
 
 /**
- * NAVIGATION: Handles clicks on the Navbar links
+ * NAVIGATION: Moved into a function to ensure it runs correctly
  */
-document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").substring(1);
+function setupNavigation() {
+    document.querySelectorAll("nav ul li a, .logo").forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const href = link.getAttribute("href");
+            const targetId = href === "#home" || link.classList.contains("logo") ? "home" : href.substring(1);
 
-        showSection(targetId);
+            showSection(targetId);
 
-        // Update active class on links
-        document.querySelectorAll("nav ul li a").forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-    });
-});
-
-/**
- * LOGO CLICK: Returns user to home
- */
-const logo = document.querySelector(".logo");
-if (logo) {
-    logo.addEventListener("click", (e) => {
-        e.preventDefault();
-        showSection("home");
-        document.querySelectorAll("nav ul li a").forEach(l => l.classList.remove("active"));
-        document.querySelector("nav ul li a[href='#home']").classList.add("active");
+            updateNav(targetId);
+        });
     });
 }

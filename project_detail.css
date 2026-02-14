@@ -1,0 +1,156 @@
+.project-detail-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 40px 16px;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.back-button {
+  border: 2px solid #000;
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.detail-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.detail-title h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detail-output-wrapper {
+  border: 2px solid #000;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 16px 24px; /* inner space between border and image */
+  box-sizing: border-box;
+}
+
+.detail-output-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 380px;
+  display: block;
+  margin: 0 auto;
+}
+
+.detail-summary h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.detail-summary p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.detail-links {
+  margin-top: 8px;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid #000;
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+}
+
+.github-link i {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .project-detail-page {
+    padding: 20px 12px 32px 12px;
+  }
+
+  .detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .detail-title h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .back-button {
+    border: none;
+    background: transparent;
+    padding: 4px;
+    font-size: 18px;
+  }
+
+  .back-text {
+    display: none;
+  }
+
+  .back-icon {
+    font-size: 20px;
+  }
+
+  .detail-title {
+    gap: 8px;
+  }
+
+  .back-button {
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+
+  .detail-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .detail-title h1 {
+    font-size: 22px;
+  }
+
+  .detail-summary p {
+    font-size: 15px;
+  }
+
+  .detail-output-image {
+    max-height: 230px;
+  }
+}
