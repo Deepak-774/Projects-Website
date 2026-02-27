@@ -99,6 +99,7 @@ async function loadProjectsFromFirestore() {
                 e.preventDefault();
                 showSection("project-detail");
                 updateNav("projects");
+                loadProjectDetailFromFirestore(doc.id);
             });
             details.appendChild(link);
 
@@ -108,6 +109,84 @@ async function loadProjectsFromFirestore() {
     } catch (err) {
         console.error("Error loading projects from Firestore", err);
         grid.innerHTML = "<p>Error loading projects. Please try again later.</p>";
+    }
+}
+
+let activeProjectDetailRequestId = null;
+
+async function loadProjectDetailFromFirestore(projectId) {
+    if (!projectId) {
+        console.warn("No projectId provided to loadProjectDetailFromFirestore");
+        return;
+    }
+
+    if (!window.db || !window.doc || !window.getDoc) {
+        console.error("Firestore doc/getDoc helpers are not initialized on window.");
+        return;
+    }
+
+    const root = document.querySelector("#project-detail .project-detail-page");
+    if (!root) {
+        console.warn("Project detail page root element not found.");
+        return;
+    }
+
+    const logoEl = root.querySelector(".detail-logo");
+    const titleEl = root.querySelector(".detail-title h1");
+    const outputImgEl = root.querySelector(".detail-output-image");
+    const overviewEl = root.querySelector(".detail-summary p");
+    const githubLinkEl = root.querySelector(".github-link");
+
+    activeProjectDetailRequestId = projectId;
+
+    if (logoEl) {
+        logoEl.src = "";
+        logoEl.alt = "Loading";
+    }
+    if (titleEl) titleEl.textContent = "Loading...";
+    if (outputImgEl) {
+        outputImgEl.src = "";
+        outputImgEl.alt = "Loading";
+    }
+    if (overviewEl) overviewEl.textContent = "Loading...";
+    if (githubLinkEl) githubLinkEl.href = "#";
+
+    try {
+        const ref = window.doc(window.db, "Projects", projectId);
+        const snap = await window.getDoc(ref);
+
+        if (activeProjectDetailRequestId !== projectId) {
+            return;
+        }
+
+        if (!snap.exists()) {
+            console.warn("Project not found in Firestore:", projectId);
+            if (titleEl) titleEl.textContent = "Project not found";
+            if (overviewEl) overviewEl.textContent = "This project could not be loaded.";
+            if (githubLinkEl) githubLinkEl.href = "#";
+            return;
+        }
+
+        const data = snap.data();
+
+        if (logoEl) {
+            logoEl.src = data["Display Image"] || logoEl.src;
+            logoEl.alt = (data["Project Name"] || "Project") + " logo";
+        }
+        if (titleEl) titleEl.textContent = data["Project Name"] || "Untitled Project";
+        if (outputImgEl) {
+            outputImgEl.src = data["GIF"] || data["Output Image"] || data["Output GIF"] || data["Output GIF Link"] || outputImgEl.src;
+            outputImgEl.alt = (data["Project Name"] || "Project") + " output";
+        }
+        if (overviewEl) overviewEl.textContent = data["Project_Overview"] || data["Project Overview"] || data["Overview"] || overviewEl.textContent;
+        if (githubLinkEl) {
+            const url = data["GitHub"] || data["GitHub Link"] || data["Github Link"] || data["Github"];
+            githubLinkEl.href = url || "#";
+        }
+    } catch (err) {
+        console.error("Error loading project detail from Firestore", err);
+        if (titleEl) titleEl.textContent = "Error";
+        if (overviewEl) overviewEl.textContent = "Error loading project details. Please try again later.";
     }
 }
 

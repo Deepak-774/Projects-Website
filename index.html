@@ -36,7 +36,7 @@
 			// Import Firebase App, Analytics (optional) and Firestore from v12.8.0
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-analytics.js";
-			import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+			import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 		
 			// Your web app's Firebase configuration (projects-website-f1359)
 			const firebaseConfig = {
@@ -58,6 +58,8 @@
 			window.db = db;
 			window.getDocs = getDocs;
 			window.collection = collection;
+			window.doc = doc;
+			window.getDoc = getDoc;
 		
 			console.log("Firebase (projects-website-f1359) initialized!");
 		</script>
