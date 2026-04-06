@@ -112,3 +112,89 @@ Hotlink for websites
 
 Removal link
 https://postimg.cc/delete/xWB0qzMs/83c4baea
+
+5. OCR Display : https://postimg.cc/JDJYmcT9/179a525f
+
+Link
+https://postimg.cc/JDJYmcT9
+Direct link
+https://i.postimg.cc/V6ZxqKXL/OCR-Display.png
+Markdown
+[OCR-Display.png](https://postimg.cc/JDJYmcT9)
+Markdown
+[![OCR-Display.png](https://i.postimg.cc/V6ZxqKXL/OCR-Display.png)](https://postimg.cc/JDJYmcT9)
+Thumbnail for forums
+[url=https://postimg.cc/JDJYmcT9][img]https://i.postimg.cc/JDJYmcT9/OCR-Display.png[/img][/url]
+Thumbnail for websites
+<a href='https://postimg.cc/JDJYmcT9' target='_blank'><img src='https://i.postimg.cc/JDJYmcT9/OCR-Display.png' border='0' alt='OCR-Display'></a>
+Hotlink for forums
+[url=https://postimages.org/][img]https://i.postimg.cc/V6ZxqKXL/OCR-Display.png[/img][/url]
+Hotlink for websites
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/V6ZxqKXL/OCR-Display.png' border='0' alt='OCR-Display'></a>
+Removal link
+https://postimg.cc/delete/xWhwtwVv/179a525f
+
+6. OCR Gif : https://postimg.cc/BXwzT61g/c0f5d418
+
+Link
+https://postimg.cc/BXwzT61g
+Direct link
+https://i.postimg.cc/cLsNNtxV/OCR.gif
+Markdown
+[OCR.gif](https://postimg.cc/BXwzT61g)
+Markdown
+[![OCR.gif](https://i.postimg.cc/cLsNNtxV/OCR.gif)](https://postimg.cc/BXwzT61g)
+Thumbnail for forums
+[url=https://postimg.cc/BXwzT61g][img]https://i.postimg.cc/BXwzT61g/OCR.gif[/img][/url]
+Thumbnail for websites
+<a href='https://postimg.cc/BXwzT61g' target='_blank'><img src='https://i.postimg.cc/BXwzT61g/OCR.gif' border='0' alt='OCR'></a>
+Hotlink for forums
+[url=https://postimg.cc/BXwzT61g][img]https://i.postimg.cc/cLsNNtxV/OCR.gif[/img][/url]
+Hotlink for websites
+<a href='https://postimg.cc/BXwzT61g' target='_blank'><img src='https://i.postimg.cc/cLsNNtxV/OCR.gif' border='0' alt='OCR'></a>
+Removal link
+https://postimg.cc/delete/LwsM4BD5/c0f5d418
+
+
+7. Currency Converter Display: https://postimg.cc/hztkfqwz/08d26139
+
+Link
+https://postimg.cc/hztkfqwz
+Direct link
+https://i.postimg.cc/KzPxpGDN/Currency-Display.png
+Markdown
+[Currency-Display.png](https://postimg.cc/hztkfqwz)
+Markdown
+[![Currency-Display.png](https://i.postimg.cc/KzPxpGDN/Currency-Display.png)](https://postimg.cc/hztkfqwz)
+Thumbnail for forums
+[url=https://postimg.cc/hztkfqwz][img]https://i.postimg.cc/hztkfqwz/Currency-Display.png[/img][/url]
+Thumbnail for websites
+<a href='https://postimg.cc/hztkfqwz' target='_blank'><img src='https://i.postimg.cc/hztkfqwz/Currency-Display.png' border='0' alt='Currency-Display'></a>
+Hotlink for forums
+[url=https://postimages.org/][img]https://i.postimg.cc/KzPxpGDN/Currency-Display.png[/img][/url]
+Hotlink for websites
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/KzPxpGDN/Currency-Display.png' border='0' alt='Currency-Display'></a>
+Removal link
+https://postimg.cc/delete/LrT2cYmF/08d26139
+
+
+8. Currency Converter Gif: https://postimg.cc/s1BL8KRV/06a56140
+
+Link
+https://postimg.cc/s1BL8KRV
+Direct link
+https://i.postimg.cc/rygLDYnt/Currency-Converter.gif
+Markdown
+[Currency-Converter.gif](https://postimg.cc/s1BL8KRV)
+Markdown
+[![Currency-Converter.gif](https://i.postimg.cc/rygLDYnt/Currency-Converter.gif)](https://postimg.cc/s1BL8KRV)
+Thumbnail for forums
+[url=https://postimg.cc/s1BL8KRV][img]https://i.postimg.cc/s1BL8KRV/Currency-Converter.gif[/img][/url]
+Thumbnail for websites
+<a href='https://postimg.cc/s1BL8KRV' target='_blank'><img src='https://i.postimg.cc/s1BL8KRV/Currency-Converter.gif' border='0' alt='Currency-Converter'></a>
+Hotlink for forums
+[url=https://postimg.cc/s1BL8KRV][img]https://i.postimg.cc/rygLDYnt/Currency-Converter.gif[/img][/url][url=https://postimages.org/]host images with direct access[/url]
+Hotlink for websites
+<a href='https://postimg.cc/s1BL8KRV' target='_blank'><img src='https://i.postimg.cc/rygLDYnt/Currency-Converter.gif' border='0' alt='Currency-Converter'></a><br><a href='https://postimages.org/'>host images with direct access</a><br>
+Removal link
+https://postimg.cc/delete/402TpTdL/06a56140
